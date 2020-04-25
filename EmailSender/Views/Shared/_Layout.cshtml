@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand">Email sender</a>
+                <ul style="display:inline">
+                    <li class="active" style="display:inline">@Html.ActionLink("Post creation", "Index", "Home")</li>
+                    <li class="active" style="display:inline">@Html.ActionLink("Archive", "Archive", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer style="position: fixed; left: 220px; bottom:0px; height:30px; width:100%;">
+            <p>&copy; @DateTime.Now.Year - EmailSender by Ilya Severchenko</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

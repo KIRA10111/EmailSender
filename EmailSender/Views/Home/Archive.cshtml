@@ -1,0 +1,48 @@
+﻿
+@model IEnumerable<EmailSender.Data.Models.LoggingRequest>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Sender</th>
+            <th>Recipient</th>
+            <th>Subject</th>
+            <th>Date od sending</th>
+            <th>Success</th>
+        </tr>
+        @foreach (var loggingRequest in Model)
+        {
+            <tr>
+                <td>@loggingRequest.FromEmail</td>
+                <td>@loggingRequest.ToEmail</td>
+                <td>@loggingRequest.Subject</td>
+                <td>@loggingRequest.SendingTime</td>
+                <td>@loggingRequest.Success</td>
+                <td><a id="@this.GetHashCode()" href="#" onclick="visible('@loggingRequest.Id');" data-text-show="Hide text" data-text-hide="Show text">Show text</a></td>
+                <td>@Html.ActionLink("Delete", "DeleteAsync", new { id = loggingRequest.Id }, null)</td>
+            </tr>
+            <tr><td colspan="7"><div id="@loggingRequest.Id" style="display:none;">@loggingRequest.Body</div></td></tr>
+        }
+    </table>
+</div>
+
+<script>
+    function visible(id) {
+        var el = document.getElementById(id);
+        var link = document.getElementById('@this.GetHashCode()');
+        if (el.style.display == "block") {
+            el.style.display = "none";
+            link.innerText = link.getAttribute('data-text-hide');
+        } else {
+            el.style.display = "block";
+            link.innerText = link.getAttribute('data-text-show');
+        }
+    }
+
+</script>
+
+

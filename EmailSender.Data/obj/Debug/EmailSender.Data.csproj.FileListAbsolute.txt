@@ -1,0 +1,17 @@
+D:\Programming\EmailSender\EmailSender.Data\obj\Debug\EmailSender.Data.csprojAssemblyReference.cache
+D:\Programming\EmailSender\EmailSender.Data\obj\Debug\EmailSender.Data.csproj.CoreCompileInputs.cache
+D:\Programming\EmailSender\EmailSender.Data\bin\Debug\EmailSender.Data.dll.config
+D:\Programming\EmailSender\EmailSender.Data\bin\Debug\EmailSender.Data.dll
+D:\Programming\EmailSender\EmailSender.Data\bin\Debug\EmailSender.Data.pdb
+D:\Programming\EmailSender\EmailSender.Data\bin\Debug\EntityFramework.dll
+D:\Programming\EmailSender\EmailSender.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Programming\EmailSender\EmailSender.Data\bin\Debug\EntityFramework.xml
+D:\Programming\EmailSender\EmailSender.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Programming\EmailSender\EmailSender.Data\obj\Debug\EmailSender.Data.csproj.CopyComplete
+D:\Programming\EmailSender\EmailSender.Data\obj\Debug\EmailSender.Data.dll
+D:\Programming\EmailSender\EmailSender.Data\obj\Debug\EmailSender.Data.pdb
+D:\Programming\EmailSender\EmailSender.Data\bin\Debug\Newtonsoft.Json.dll
+D:\Programming\EmailSender\EmailSender.Data\bin\Debug\SendGrid.dll
+D:\Programming\EmailSender\EmailSender.Data\bin\Debug\Newtonsoft.Json.xml
+D:\Programming\EmailSender\EmailSender.Data\bin\Debug\SendGrid.pdb
+D:\Programming\EmailSender\EmailSender.Data\bin\Debug\SendGrid.xml

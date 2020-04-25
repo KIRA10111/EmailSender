@@ -1,0 +1,28 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("EmailSender", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        <p>
+            <label for="FromEmail" class="col-xl-2">Your email: </label>
+            <input class="col-xl-10" style="width: 300px" type="email" name="FromEmail" placeholder="Enter your email" />
+        </p>
+
+
+        <p>
+            <label for="ToEmail" class="col-xl-2">Recipient's email: </label>
+            <input class="col-xl-10" style="width: 300px" type="email" name="ToEmail" placeholder="Enter recipient email" />
+        </p>
+        <p><input style="width: 750px" type="text" name="Subject" placeholder="Message subject" maxlength="50" /></p>
+    </div>
+
+    <p><textarea style="height: 200px; width: 750px" name="Body" placeholder="Enter your message"></textarea></p>
+
+    <p>
+        <button type="submit" class="btn btn-outline-secondary-green" style="width: 100px">Send</button>
+        <button type="reset" class="btn btn-outline-secondary-red" style="width: 100px">Cancel</button>
+    </p>
+}
