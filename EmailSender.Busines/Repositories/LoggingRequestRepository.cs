@@ -1,20 +1,10 @@
 ﻿using EmailSender.Busines.Interfaces;
 using EmailSender.Data;
 using EmailSender.Data.Models;
-using FluentEmail.Core;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Net.Mail;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-using System.Threading;
-using FluentEmail.Core.Interfaces;
-using FluentEmail.Core.Models;
-using System.Collections.Specialized;
-using FluentEmail.SendGrid;
 
 namespace EmailSender.Busines.Repositories
 {

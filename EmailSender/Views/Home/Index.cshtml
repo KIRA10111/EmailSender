@@ -1,8 +1,7 @@
-﻿
-
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 @using (Html.BeginForm("EmailSender", "Home", FormMethod.Post))
 {
     <div class="form-group">
@@ -10,7 +9,6 @@
             <label for="FromEmail" class="col-xl-2">Your email: </label>
             <input class="col-xl-10" style="width: 300px" type="email" name="FromEmail" placeholder="Enter your email" />
         </p>
-
 
         <p>
             <label for="ToEmail" class="col-xl-2">Recipient's email: </label>

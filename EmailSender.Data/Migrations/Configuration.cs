@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EmailSender.Data.Migrations
+﻿namespace EmailSender.Data.Migrations
 {
     using System.Data.Entity.Migrations;
 

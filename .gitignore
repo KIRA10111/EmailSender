@@ -351,7 +351,10 @@ MigrationBackup/
 .ionide/
 
 
-./EmailSender.Data/bin
-./EmailSender.Data/obj
-
+EmailSender.Data/bin
+EmailSender.Data/obj
+EmailSender.Busines/bin
+EmailSender.Busines/obj
+EmailSender/obj
+EmailSender/bin
 packages/

@@ -1,15 +1,9 @@
 ﻿using EmailSender.Busines.Interfaces;
 using EmailSender.Data.Models;
-using FluentEmail.Core;
-using FluentEmail.SendGrid;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EmailSender.Controllers
@@ -61,10 +55,12 @@ namespace EmailSender.Controllers
                 result.Error = ex.Message;
             }
             await _loggingRequestRepository.AddEmailAsync(result);
+
             return RedirectToAction("Archive");
         }
         public async Task<ActionResult> Archive()
         {
+            // TODO: Naming of variables 
             var results = await _loggingRequestRepository.GetAllEmailAsync();
 
             return View(results);
@@ -74,7 +70,6 @@ namespace EmailSender.Controllers
         {
             await _loggingRequestRepository.DeleteEmailAsync(id);
             return RedirectToAction("Archive");
-
         }
     }
 }

@@ -16,7 +16,14 @@ namespace EmailSender.Data
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
+
         public DbSet<LoggingRequest> LoggingRequest { get; set; }
+
+        // TODO: Each entity configuration should be in separate file
+        // Create folder 'Configuration'
+        // Move LoggingRequest settings to LoggingRequestConfiguration file 
+        // This link help you 
+        // https://www.entityframeworktutorial.net/code-first/move-configurations-to-seperate-class-in-code-first.aspx
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LoggingRequest>().ToTable("LoggingRequest");

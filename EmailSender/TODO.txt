@@ -1,0 +1,23 @@
+﻿1. Move all sending email logic to separate part
+Create service for sending email
+
+IEmailSenderService
+
+В этом интерфейсе должны быть методы отправки emaila
+
+SendEmailAsync(Модель для отправки);
+
+EmailSenderService : IEmailSenderService
+
+и затем в твой HomeController в конструктов по аналогии с репозиторием ты будешь инжектить твой IEmailSenderService
+и далее его использовать как-то так
+
+await _emailSenderService.SendEmailAsync(сюда нужно передавать модель с данными для отправки new EmailSendingModel() {To = bla, From = bla, ....})
+
+Тем самым ты добьешься того что твой верхний слой(Слой контроллеров и UI) по сути не будет знать о том как отправляются данные дальше -> Инкапсуляция
+
+2. Add logging to file
+
+https://serilog.net/
+
+Добавить логирование в файл. Настроить логирование исключений, отпавок почты, по сути всех событий которых делает твое приложение. 
