@@ -10,6 +10,8 @@ namespace EmailSender.Busines.Repositories
 {
     public class LoggingRequestRepository : ILoggingRequestRepository
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         private readonly ApplicationDbContext _context;
 
         public LoggingRequestRepository(ApplicationDbContext context)
@@ -20,13 +22,14 @@ namespace EmailSender.Busines.Repositories
         public async Task<LoggingRequest> AddEmailAsync(LoggingRequest entity)
         {
             try
-            {
+            {                
                 var result = _context.LoggingRequest.Add(entity);
                 await _context.SaveChangesAsync();
                 return result;
             }
             catch (Exception ex)
             {
+                Logger.Error(ex.Message);
                 throw;
             }
         }
@@ -44,6 +47,7 @@ namespace EmailSender.Busines.Repositories
                 }
                 catch (Exception ex)
                 {
+                    Logger.Error(ex.Message);
                     throw;
                 }
             }
@@ -51,7 +55,7 @@ namespace EmailSender.Busines.Repositories
             throw new NullReferenceException($"Result with id={id} not found");
         }
 
-        public async Task<IEnumerable<LoggingRequest>> GetAllEmailAsync()
+        public async Task<IEnumerable<LoggingRequest>> GetAllEmailsAsync()
         {
             return await _context.LoggingRequest.ToListAsync();
         }

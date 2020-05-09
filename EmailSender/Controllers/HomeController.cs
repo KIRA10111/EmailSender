@@ -1,19 +1,18 @@
 ﻿using EmailSender.Busines.Interfaces;
-using EmailSender.Data.Models;
-using SendGrid;
-using SendGrid.Helpers.Mail;
-using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace EmailSender.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly ILoggingRequestRepository _loggingRequestRepository;
-        public HomeController(ILoggingRequestRepository loggingRequestRepository)
+        private readonly IEmailSenderService _emailSenderServices;
+        public HomeController(ILoggingRequestRepository loggingRequestRepository, IEmailSenderService emailSenderServices)
         {
             _loggingRequestRepository = loggingRequestRepository;
+            _emailSenderServices = emailSenderServices;
         }
         public ActionResult Index()
         {
@@ -23,47 +22,14 @@ namespace EmailSender.Controllers
         [HttpPost]
         public async Task<ActionResult> EmailSender(string fromEmail, string toEmail, string subject, string body)
         {
-            var result = new LoggingRequest();
-            try
-            {
-                var apiKey = "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";
-                var client = new SendGridClient(apiKey);
-                var from = new EmailAddress(fromEmail, null);
-                var to = new EmailAddress(toEmail, null);
-                var msg = MailHelper.CreateSingleEmail(from, to, subject, body, body);
-                var response = await client.SendEmailAsync(msg);
-                var statusCode = (int)response.StatusCode;
-                if (statusCode == 200 || statusCode == 201 || statusCode == 202)
-                {
-                   result.Success = true;                   
-                    //ViewBag.Message = "Your mail was sended!";
-                }
-                else
-                {
-                    result.Success = false;
-                    //ViewBag.Message = "Oops! Something went wrong :( Unable to send mail from {} to {}";
-                }
-
-                result.FromEmail = fromEmail;
-                result.ToEmail = toEmail;
-                result.Subject = subject;
-                result.Body = body;
-                result.SendingTime = DateTime.UtcNow;                  
-            }
-            catch (Exception ex)
-            {
-                result.Error = ex.Message;
-            }
-            await _loggingRequestRepository.AddEmailAsync(result);
-
+            await _emailSenderServices.SendEmailAsync(fromEmail, toEmail, subject, body);
             return RedirectToAction("Archive");
         }
         public async Task<ActionResult> Archive()
         {
-            // TODO: Naming of variables 
-            var results = await _loggingRequestRepository.GetAllEmailAsync();
-
-            return View(results);
+            var allEmails = await _loggingRequestRepository.GetAllEmailsAsync();
+          
+            return View(allEmails);
         }
        
         public async Task<ActionResult> DeleteAsync(int id)

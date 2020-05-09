@@ -4,6 +4,7 @@ using Autofac.Integration.Mvc;
 using EmailSender.Busines.Interfaces;
 using EmailSender.Data;
 using EmailSender.Busines.Repositories;
+using EmailSender.Busines.Services;
 
 namespace EmailSender.DependencyInjection
 {
@@ -16,6 +17,7 @@ namespace EmailSender.DependencyInjection
 
             builder.RegisterType<LoggingRequestRepository>().As<ILoggingRequestRepository>()
                 .WithParameter("context", new ApplicationDbContext());
+            builder.RegisterType<EmailSenderService>().As<IEmailSenderService>();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
